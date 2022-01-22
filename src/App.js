@@ -1,114 +1,4 @@
 
-// import React, {useReducer, useRef} from 'react'
-// import moment from 'moment'
-
-// const reducer = (state, action)=>{
-//   switch (action.type) {
-//     case "add":
-//       return {
-//         balance: state.balance + action.details,
-//           lists: [...state.lists,{
-//             list:`${moment().format().toString()} - ${action.details} - Add`,
-//             status: 'success'
-//           }],
-          
-//       }
-//     case "remove":{
-//       if(state.balance < action.details) {
-//         alert('Insufficient Balance')
-//         return {
-//             balance: state.balance,
-//             lists: [...state.lists,{
-//                 list:`${moment().format().toString()} - ${action.details} - Remove`,
-//                 status: 'failed'
-//               }],
-//         }
-//       }
-//       return {
-//         balance: state.balance - action.details,
-//         lists: [...state.lists,{
-//             list:`${moment().format().toString()} - ${action.details} - Remove`,
-//             status: 'success'
-//           }],
-//       }
-//     } 
-//     default:
-//       return state;
-//   }
-// }
-
-// export default function App() {
-//     const inputRef = useRef(null);
-//     const [items, dispatch] = useReducer(reducer, {lists:[], balance: 0});
-
-//     const handleAmount=(value)=>{
-//         if(!inputRef.current.value){
-//             inputRef.current.value = null;
-//             inputRef.current.focus();
-//             return
-//         } 
-//         if(value==='add'){
-//             dispatch({
-//                 type: "add",
-//                 details: parseInt(inputRef.current.value)
-//             });
-//         }else{
-//             dispatch({
-//                 type: "remove",
-//                 details: parseInt(inputRef.current.value)
-//             });
-//         }
-//         inputRef.current.value = null;
-//         inputRef.current.focus();
-//     }
-
-//   return (
-//     <div style={{
-//       height:'100vh', width:'100%', display:'flex', justifyContent:'center', flexDirection:'column',alignItems:'center',
-//     }}>
-//         <div style={{ display:'flex', justifyContent:'center', flexDirection:'column',alignItems:'center',
-//         border:'2px solid black', width:'600px'
-//         }}>
-//             <h1>Expense Tracker-Basic</h1>
-//             <div style={{ display:'flex', justifyContent:'center', flexDirection:'column',alignItems:'center',
-//                 border:'1px solid black', height:'100px', width:'550px'
-//             }}>
-//                 <p style={{margin:'0'}}>Balanace:{items.balance}</p>
-//                 <input placeholder="Enter Amount" ref={inputRef}
-//                 type="number"style={{display:"block"}}/>
-//                 <div>
-//                     <button style={{width:'70px', margin:'5px'}} onClick={()=>handleAmount('add')}>Add</button>
-//                     <button style={{width:'70px',margin:'5px'}} onClick={()=>handleAmount('remove')}>Remove</button>
-//                 </div>
-//             </div>
-//             <div style={{ marginTop:'20px', marginBottom:'20px',
-//                 border:'1px solid black', minHeight:'200px', width:'550px'
-//             }}>
-//             <table style={{margin:'5px', width:'100%'}}>
-//                 <thead>
-//                     <tr>Transactions:</tr>
-//                     <tr>
-//                         <td>Details</td>
-//                         <td>Status</td>
-//                     </tr>
-//                 </thead>
-//                 <tbody>
-//                     {items.lists.map((item, index) => {
-//                     return (
-//                     <tr style={{width:'100%'}} key={index}>
-//                         <td>{item.list}</td>
-//                         <td state={{textAlign:'right'}}>{item.status}</td>
-//                     </tr>
-//                     )
-//                 })}
-//                 </tbody>
-//             </table>
-//             </div>
-//         </div>
-//     </div>
-//   );
-// }
-
 import React from 'react'
 import './App.css'
 const reducer=(state, action)=>{
@@ -196,10 +86,10 @@ export default function App() {
     },[type])
 
     return (
-    <div style={{marginTop:"20px", width:'100%'}}>
+    <div style={{marginTop:"30px", width:'100%'}}>
           {type && 
           <form className="d-flex" 
-            style={{alignItems:'center', justifyContent:'center', width:'100%',
+            style={{alignItems:'center', minHeight :'150px', width:'100%',
             flexDirection:'column', alignItems:'center'}}>
                 <input className="form-control" type={email_mob === '1' ? 'text' : 'number'}
                 style={{width:'100%', margin:'3px'}} 
@@ -248,15 +138,16 @@ export default function App() {
   return (
     <div className="App" style={{width:'100%',display:'flex',height:'100vh',
     alignItems:'center', flexDirection:'column'}}>
-     <div className="card" style={{display:'flex',minHeight:'300px',maxWidth:'550px', marginTop:'100px',
+     <div className="card" style={{display:'flex',minHeight:'220px',maxWidth:'550px', marginTop:'150px',
      justifyContent:'center', flexDirection:'column', alignItems:'center'}}>
+       <h3 style={{marginTop:'20px'}}>Login</h3>
        <div style={{display:'flex',maxWidth:'', justifyContent:'center', flexWrap:'wrap'}}>
           <button className="btn btn-primary" style={{width:'200px', margin:'5px'}} onClick={()=>handleInputs('1')}>Email and Password</button>
           <button className="btn btn-success" style={{width:'200px', margin:'5px'}}  onClick={()=>handleInputs('2')}>Email and OTP</button>
           <button className="btn btn-warning" style={{width:'200px', margin:'5px'}}  onClick={()=>handleInputs('3')}>Mobile and Password</button>
           <button className="btn btn-info" style={{width:'200px', margin:'5px'}}  onClick={()=>handleInputs('4')}>Mobile and OTP</button>
        </div>
-       <div className="d-flex" id='inputs'style={{alignItems:'center', justifyContent:'center', width:'410px',
+       <div className="d-flex" id='inputs'style={{alignItems:'center', width:'410px',
             flexDirection:'column', alignItems:'center'}}>
             <Inputdata type={data.type} email_mob={data.email_or_mobile} pass_otp={data.otp_or_password}/>
        </div>
