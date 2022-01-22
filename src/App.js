@@ -138,7 +138,7 @@ export default function App() {
   return (
     <div className="App" style={{width:'100%',display:'flex',height:'100vh',
     alignItems:'center', flexDirection:'column'}}>
-     <div className="card" style={{display:'flex',minHeight:'220px',maxWidth:'550px', marginTop:'150px',
+     <div className="card" style={{display:'flex',minHeight:'220px',maxWidth:'550px', marginTop:'100px',
      justifyContent:'center', flexDirection:'column', alignItems:'center'}}>
        <h3 style={{marginTop:'20px'}}>Login</h3>
        <div style={{display:'flex',maxWidth:'', justifyContent:'center', flexWrap:'wrap'}}>
