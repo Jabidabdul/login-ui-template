@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+@media screen and (max-width: 422px) {
+  #inputs {
+    width:200px !important;
+  }
+  
+}
