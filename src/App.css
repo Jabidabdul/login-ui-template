@@ -36,9 +36,16 @@
     transform: rotate(360deg);
   }
 }
+#login_btn:hover{
+  background:rgb(78, 9, 143);
+}
+
 @media screen and (max-width: 422px) {
-  #inputs {
-    width:200px !important;
+
+}
+
+@media screen and (max-width: 260px) {
+  body{
+    font-size: 12px;
   }
-  
 }
