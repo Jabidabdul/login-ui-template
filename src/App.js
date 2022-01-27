@@ -29,9 +29,9 @@ const reducer=(state, action)=>{
 }
 export default function App() {
   
-  const [data, dispatch] = React.useReducer(reducer, {type : '', email_or_mobile : '', otp_or_password:''})
-  
-  const Inputdata = ({type,email_mob, pass_otp}) =>{
+  const [data, dispatch] = React.useReducer(reducer, {type : '1', email_or_mobile : '1', otp_or_password:'1'})
+
+  const Inputdata = ({type, email_mob, pass_otp}) =>{
 
     const input_email_mobile = React.useRef();
     const input_otp_password = React.useRef();
@@ -83,13 +83,13 @@ export default function App() {
     }
 
     React.useEffect(()=>{
-    },[type])
+    },[])
 
     return (
     <div style={{marginTop:"30px", width:'100%'}}>
           {type && 
           <form className="d-flex" 
-            style={{alignItems:'center', minHeight :'150px', width:'100%',
+            style={{minHeight :'150px', width:'100%',
             flexDirection:'column', alignItems:'center'}}>
                 <input className="form-control" type={email_mob === '1' ? 'text' : 'number'}
                 style={{width:'100%', margin:'3px'}} 
@@ -103,9 +103,10 @@ export default function App() {
                 placeholder={pass_otp === '1' ? 'Password' : 'Enter OTP'}
                 ref={input_otp_password}/>
 
-                <button className="btn btn-danger"
-                style={{width:'100%', margin:'3px'}} 
+                <button className="btn" id="login_btn"
+                style={{width:'100%', margin:'3px', background:'#7061d1'}} 
                 onClick={handleSubmit} >Submit</button>
+
           </form>}
     </div>
       
@@ -138,16 +139,66 @@ export default function App() {
   return (
     <div className="App" style={{width:'100%',display:'flex',height:'100vh',
     alignItems:'center', flexDirection:'column'}}>
-     <div className="card" style={{display:'flex',minHeight:'220px',maxWidth:'550px', marginTop:'100px',
+     <div className="card" style={{display:'flex',minHeight:'220px',maxWidth:'300px', marginTop:'100px',
      justifyContent:'center', flexDirection:'column', alignItems:'center'}}>
-       <h3 style={{marginTop:'20px'}}>Login</h3>
+       <h3 style={{marginTop:'20px',fontSize:'20px'}}>Login with:</h3>
+
        <div style={{display:'flex',maxWidth:'', justifyContent:'center', flexWrap:'wrap'}}>
-          <button className="btn btn-primary" style={{width:'200px', margin:'5px'}} onClick={()=>handleInputs('1')}>Email and Password</button>
-          <button className="btn btn-success" style={{width:'200px', margin:'5px'}}  onClick={()=>handleInputs('2')}>Email and OTP</button>
-          <button className="btn btn-warning" style={{width:'200px', margin:'5px'}}  onClick={()=>handleInputs('3')}>Mobile and Password</button>
-          <button className="btn btn-info" style={{width:'200px', margin:'5px'}}  onClick={()=>handleInputs('4')}>Mobile and OTP</button>
+
+          <div style={{width:'70%'}}>
+            <div class="form-check" style={{width:''}}>
+              <input class="form-check-input"
+              type="radio" name="radio_button"
+              id="email_password" value="1"
+              onChange={()=>handleInputs('1')} defaultChecked
+              />
+              <label class="form-check-label" for="email_password">
+              Email and Password
+              </label>
+            </div>
+          </div>
+          
+          <div style={{width:'70%'}}>
+            <div class="form-check" style={{width:''}}>
+              <input class="form-check-input" 
+              type="radio" name="radio_button" 
+              id="email_otp" value="2" 
+              onChange={()=>handleInputs('2')}
+              />
+              <label class="form-check-label" for="email_otp">
+              Email and OTP{" "}
+              </label>
+            </div>
+          </div>
+          
+          <div style={{width:'70%'}}>
+            <div class="form-check" style={{width:''}}>
+              <input class="form-check-input" 
+              type="radio" name="radio_button" 
+              id="mobile_password" value="3" 
+              onChange={()=>handleInputs('3')}
+              />
+              <label class="form-check-label" for="mobile_password">
+              Mobile and Password        
+              </label>
+            </div>
+          </div>
+          
+          <div style={{width:'70%'}}>
+            <div class="form-check" >
+              <input class="form-check-input" 
+              type="radio" name="radio_button" 
+              id="mobile_otp" value="4" 
+              onChange={()=>handleInputs('4')}
+              />
+              <label class="form-check-label" for="mobile_otp">
+              Mobile and OTP
+              </label>
+            </div>
+          </div>
+          
        </div>
-       <div className="d-flex" id='inputs'style={{alignItems:'center', width:'410px',
+       <div className="d-flex" id='inputs'style={{width:'80%',
             flexDirection:'column', alignItems:'center'}}>
             <Inputdata type={data.type} email_mob={data.email_or_mobile} pass_otp={data.otp_or_password}/>
        </div>
